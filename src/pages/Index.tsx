@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
@@ -11,8 +12,10 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { isRTL } = useLanguage();
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" dir={isRTL ? "rtl" : "ltr"}>
       <Navbar />
       <HeroSection />
       <TrustSection />

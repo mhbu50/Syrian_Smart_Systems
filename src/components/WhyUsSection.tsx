@@ -1,39 +1,42 @@
 import { Award, TrendingUp, Target, MapPin, Headphones, Clock } from "lucide-react";
-
-const features = [
-  {
-    icon: Award,
-    title: "Experienced Team",
-    description: "Skilled engineers with deep expertise across diverse technologies and industries.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Scalable Solutions",
-    description: "Future-ready systems designed to grow seamlessly with your business.",
-  },
-  {
-    icon: Target,
-    title: "Business-Focused",
-    description: "Technology aligned with your strategic goals and measurable outcomes.",
-  },
-  {
-    icon: MapPin,
-    title: "Local Expertise",
-    description: "Deep understanding of regional market dynamics and requirements.",
-  },
-  {
-    icon: Headphones,
-    title: "Dedicated Support",
-    description: "Responsive, personalized support that keeps your systems running smoothly.",
-  },
-  {
-    icon: Clock,
-    title: "On-Time Delivery",
-    description: "Reliable project timelines with transparent communication throughout.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyUsSection = () => {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: Award,
+      titleKey: "whyUs.experienced.title",
+      descKey: "whyUs.experienced.desc",
+    },
+    {
+      icon: TrendingUp,
+      titleKey: "whyUs.scalable.title",
+      descKey: "whyUs.scalable.desc",
+    },
+    {
+      icon: Target,
+      titleKey: "whyUs.business.title",
+      descKey: "whyUs.business.desc",
+    },
+    {
+      icon: MapPin,
+      titleKey: "whyUs.local.title",
+      descKey: "whyUs.local.desc",
+    },
+    {
+      icon: Headphones,
+      titleKey: "whyUs.support.title",
+      descKey: "whyUs.support.desc",
+    },
+    {
+      icon: Clock,
+      titleKey: "whyUs.delivery.title",
+      descKey: "whyUs.delivery.desc",
+    },
+  ];
+
   return (
     <section id="why-us" className="section-padding gradient-subtle">
       <div className="container-main">
@@ -41,15 +44,14 @@ const WhyUsSection = () => {
           {/* Content */}
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Why Choose Us
+              {t("whyUs.badge")}
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Your Trusted Partner for{" "}
-              <span className="text-gradient-accent">Digital Success</span>
+              {t("whyUs.title")}{" "}
+              <span className="text-gradient-accent">{t("whyUs.titleHighlight")}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We combine technical excellence with business understanding to deliver 
-              solutions that truly make a difference. Here's what sets us apart.
+              {t("whyUs.subtitle")}
             </p>
 
             {/* Feature List */}
@@ -60,8 +62,8 @@ const WhyUsSection = () => {
                     <feature.icon className="w-5 h-5 text-accent-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-heading font-semibold text-foreground mb-1">{feature.title}</h4>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <h4 className="font-heading font-semibold text-foreground mb-1">{t(feature.titleKey)}</h4>
+                    <p className="text-sm text-muted-foreground">{t(feature.descKey)}</p>
                   </div>
                 </div>
               ))}
@@ -78,8 +80,8 @@ const WhyUsSection = () => {
                 <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h4 className="font-heading font-semibold text-foreground mb-2">{feature.title}</h4>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h4 className="font-heading font-semibold text-foreground mb-2">{t(feature.titleKey)}</h4>
+                <p className="text-sm text-muted-foreground">{t(feature.descKey)}</p>
               </div>
             ))}
 
@@ -88,15 +90,15 @@ const WhyUsSection = () => {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-3xl font-bold">10+</div>
-                  <div className="text-sm opacity-80">Years</div>
+                  <div className="text-sm opacity-80">{t("whyUs.stats.years")}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold">100+</div>
-                  <div className="text-sm opacity-80">Projects</div>
+                  <div className="text-sm opacity-80">{t("whyUs.stats.projects")}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold">50+</div>
-                  <div className="text-sm opacity-80">Clients</div>
+                  <div className="text-sm opacity-80">{t("whyUs.stats.clients")}</div>
                 </div>
               </div>
             </div>

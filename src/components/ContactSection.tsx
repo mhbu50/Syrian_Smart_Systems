@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { t, isRTL } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,8 +17,8 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
+      title: t("contact.toast.title"),
+      description: t("contact.toast.desc"),
     });
     setFormData({ name: "", email: "", company: "", message: "" });
   };
@@ -32,14 +34,13 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Get in Touch
+              {t("contact.badge")}
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Let's Start a <span className="text-gradient">Conversation</span>
+              {t("contact.title")} <span className="text-gradient">{t("contact.titleHighlight")}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10">
-              Ready to transform your business with smart IT solutions? 
-              Reach out to us and let's discuss how we can help.
+              {t("contact.subtitle")}
             </p>
 
             <div className="space-y-6">
@@ -48,7 +49,7 @@ const ContactSection = () => {
                   <Mail className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Email Us</div>
+                  <div className="text-sm text-muted-foreground">{t("contact.email")}</div>
                   <a href="mailto:info@syriansmarts.com" className="font-medium text-foreground hover:text-primary transition-colors">
                     info@syriansmarts.com
                   </a>
@@ -60,7 +61,7 @@ const ContactSection = () => {
                   <Phone className="w-5 h-5 text-accent-foreground" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Call Us</div>
+                  <div className="text-sm text-muted-foreground">{t("contact.call")}</div>
                   <a href="tel:+963123456789" className="font-medium text-foreground hover:text-primary transition-colors">
                     +963 123 456 789
                   </a>
@@ -72,7 +73,7 @@ const ContactSection = () => {
                   <MapPin className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Visit Us</div>
+                  <div className="text-sm text-muted-foreground">{t("contact.visit")}</div>
                   <span className="font-medium text-foreground">
                     Damascus, Syria
                   </span>
@@ -80,8 +81,8 @@ const ContactSection = () => {
               </div>
 
               <Button variant="outline" size="lg" className="w-full mt-4 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                <MessageCircle className="mr-2" size={18} />
-                Chat on WhatsApp
+                <MessageCircle className={isRTL ? "ml-2" : "mr-2"} size={18} />
+                {t("contact.whatsapp")}
               </Button>
             </div>
           </div>
@@ -89,12 +90,12 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="p-8 bg-card rounded-2xl border border-border/50 shadow-card">
             <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
-              Send us a message
+              {t("contact.form.title")}
             </h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                  Your Name
+                  {t("contact.form.name")}
                 </label>
                 <input
                   type="text"
@@ -104,13 +105,13 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                  placeholder="John Doe"
+                  placeholder={t("contact.form.namePlaceholder")}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email Address
+                  {t("contact.form.email")}
                 </label>
                 <input
                   type="email"
@@ -120,13 +121,13 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                  placeholder="john@company.com"
+                  placeholder={t("contact.form.emailPlaceholder")}
                 />
               </div>
 
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                  Company Name
+                  {t("contact.form.company")}
                 </label>
                 <input
                   type="text"
@@ -135,13 +136,13 @@ const ContactSection = () => {
                   value={formData.company}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                  placeholder="Your Company"
+                  placeholder={t("contact.form.companyPlaceholder")}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Your Message
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   id="message"
@@ -151,13 +152,13 @@ const ContactSection = () => {
                   required
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder={t("contact.form.messagePlaceholder")}
                 />
               </div>
 
               <Button type="submit" variant="hero" size="lg" className="w-full">
-                <Send className="mr-2" size={18} />
-                Send Message
+                <Send className={isRTL ? "ml-2" : "mr-2"} size={18} />
+                {t("contact.form.submit")}
               </Button>
             </form>
           </div>

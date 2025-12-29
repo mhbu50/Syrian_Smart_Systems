@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.png";
-
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#process", label: "Our Process" },
-  { href: "#results", label: "Results" },
-  { href: "#contact", label: "Contact" },
-];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "#services", label: t("nav.services") },
+    { href: "#why-us", label: t("nav.whyUs") },
+    { href: "#process", label: t("nav.process") },
+    { href: "#results", label: t("nav.results") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
@@ -37,19 +40,23 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher />
             <Button variant="hero" size="lg">
-              Book Consultation
+              {t("nav.bookConsultation")}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="lg:hidden flex items-center gap-3">
+            <LanguageSwitcher />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -67,7 +74,7 @@ const Navbar = () => {
                 </a>
               ))}
               <Button variant="hero" size="lg" className="mt-2">
-                Book Consultation
+                {t("nav.bookConsultation")}
               </Button>
             </div>
           </div>

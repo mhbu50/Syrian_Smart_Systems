@@ -1,7 +1,10 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
+  const { t, isRTL } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center gradient-hero overflow-hidden pt-24">
       {/* Background Pattern */}
@@ -21,27 +24,26 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Enterprise-Grade IT Solutions
+              {t("hero.badge")}
             </div>
 
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight opacity-0 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              Smart IT Solutions That Help Your{" "}
-              <span className="text-gradient">Business Scale</span>
+              {t("hero.title")}{" "}
+              <span className="text-gradient">{t("hero.titleHighlight")}</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              We design, build, and manage reliable IT systems that drive efficiency, 
-              security, and growth for forward-thinking businesses.
+              {t("hero.subtitle")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <Button variant="hero" size="xl" className="group">
-                Book a Free Consultation
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                {t("hero.cta.primary")}
+                <ArrowRight className={`group-hover:${isRTL ? '-translate-x-1' : 'translate-x-1'} transition-transform ${isRTL ? 'rotate-180' : ''}`} />
               </Button>
               <Button variant="heroOutline" size="xl" className="group">
-                <Play size={18} className="mr-1" />
-                View Our Services
+                <Play size={18} className={isRTL ? "ml-1" : "mr-1"} />
+                {t("hero.cta.secondary")}
               </Button>
             </div>
 
@@ -49,15 +51,15 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <div>
                 <div className="font-heading text-3xl md:text-4xl font-bold text-primary">10+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.years")}</div>
               </div>
               <div>
                 <div className="font-heading text-3xl md:text-4xl font-bold text-primary">100+</div>
-                <div className="text-sm text-muted-foreground">Projects Delivered</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.projects")}</div>
               </div>
               <div>
                 <div className="font-heading text-3xl md:text-4xl font-bold text-accent">99%</div>
-                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.satisfaction")}</div>
               </div>
             </div>
           </div>
@@ -76,8 +78,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-sm">Security Certified</div>
-                      <div className="text-xs text-muted-foreground">ISO 27001</div>
+                      <div className="font-semibold text-sm">{t("hero.card.security")}</div>
+                      <div className="text-xs text-muted-foreground">{t("hero.card.iso")}</div>
                     </div>
                   </div>
                 </div>
@@ -90,8 +92,8 @@ const HeroSection = () => {
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-sm">99.9% Uptime</div>
-                      <div className="text-xs text-muted-foreground">Guaranteed</div>
+                      <div className="font-semibold text-sm">{t("hero.card.uptime")}</div>
+                      <div className="text-xs text-muted-foreground">{t("hero.card.guaranteed")}</div>
                     </div>
                   </div>
                 </div>

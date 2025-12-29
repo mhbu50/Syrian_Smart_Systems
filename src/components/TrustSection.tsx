@@ -1,4 +1,8 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const TrustSection = () => {
+  const { t } = useLanguage();
+
   const logos = [
     { name: "Company 1", width: "120px" },
     { name: "Company 2", width: "100px" },
@@ -12,7 +16,7 @@ const TrustSection = () => {
     <section className="py-16 bg-muted/30 border-y border-border/50">
       <div className="container-main px-4 sm:px-6 lg:px-8">
         <p className="text-center text-muted-foreground text-sm font-medium mb-10 uppercase tracking-wider">
-          Trusted by forward-thinking companies
+          {t("trust.title")}
         </p>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
           {logos.map((logo, index) => (
