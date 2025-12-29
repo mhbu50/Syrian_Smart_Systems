@@ -1,40 +1,62 @@
 import { Quote } from "lucide-react";
-
-const testimonials = [
-  {
-    quote: "Their IT solutions helped us modernize our operations quickly and securely. The team understood our needs perfectly and delivered beyond expectations.",
-    author: "Ahmad Al-Hassan",
-    role: "CEO, Tech Innovations Ltd",
-    avatar: "A",
-  },
-  {
-    quote: "Syrian Smart Systems transformed our infrastructure. We saw a 40% improvement in efficiency within the first quarter. Highly recommended!",
-    author: "Sarah Mitchell",
-    role: "CIO, Global Trading Co",
-    avatar: "S",
-  },
-  {
-    quote: "Professional, reliable, and truly expert. They've been our trusted IT partner for over 3 years. Their support team is exceptional.",
-    author: "Mohammad Khalil",
-    role: "IT Director, Finance Corp",
-    avatar: "M",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TestimonialsSection = () => {
+  const { t, language } = useLanguage();
+
+  const testimonials = language === "ar" ? [
+    {
+      quote: "ساعدتنا حلولهم التقنية على تحديث عملياتنا بسرعة وأمان. فهم الفريق احتياجاتنا بشكل مثالي وتجاوز توقعاتنا.",
+      author: "أحمد الحسن",
+      role: "المدير التنفيذي، شركة الابتكارات التقنية",
+      avatar: "أ",
+    },
+    {
+      quote: "حولت السورية للأنظمة الذكية بنيتنا التحتية. شهدنا تحسناً بنسبة 40% في الكفاءة خلال الربع الأول. ننصح بهم بشدة!",
+      author: "سارة ميتشل",
+      role: "مديرة تقنية المعلومات، شركة التجارة العالمية",
+      avatar: "س",
+    },
+    {
+      quote: "محترفون وموثوقون وخبراء حقيقيون. كانوا شريكنا التقني الموثوق لأكثر من 3 سنوات. فريق الدعم استثنائي.",
+      author: "محمد خليل",
+      role: "مدير تقنية المعلومات، شركة التمويل",
+      avatar: "م",
+    },
+  ] : [
+    {
+      quote: "Their IT solutions helped us modernize our operations quickly and securely. The team understood our needs perfectly and delivered beyond expectations.",
+      author: "Ahmad Al-Hassan",
+      role: "CEO, Tech Innovations Ltd",
+      avatar: "A",
+    },
+    {
+      quote: "Syrian Smart Systems transformed our infrastructure. We saw a 40% improvement in efficiency within the first quarter. Highly recommended!",
+      author: "Sarah Mitchell",
+      role: "CIO, Global Trading Co",
+      avatar: "S",
+    },
+    {
+      quote: "Professional, reliable, and truly expert. They've been our trusted IT partner for over 3 years. Their support team is exceptional.",
+      author: "Mohammad Khalil",
+      role: "IT Director, Finance Corp",
+      avatar: "M",
+    },
+  ];
+
   return (
     <section className="section-padding gradient-subtle">
       <div className="container-main">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Testimonials
+            {t("testimonials.badge")}
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            What Our <span className="text-gradient">Clients Say</span>
+            {t("testimonials.title")} <span className="text-gradient">{t("testimonials.titleHighlight")}</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Don't just take our word for it. Here's what our clients have to say about working with us.
+            {t("testimonials.subtitle")}
           </p>
         </div>
 

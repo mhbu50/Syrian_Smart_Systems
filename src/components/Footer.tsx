@@ -1,30 +1,32 @@
 import { Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const services = [
-    "Custom Software",
-    "Cloud & Infrastructure",
-    "ERP & CRM Solutions",
-    "Cybersecurity",
-    "AI & Automation",
-    "IT Consulting",
+    { key: "footer.customSoftware", href: "#services" },
+    { key: "footer.cloudInfra", href: "#services" },
+    { key: "footer.erpCrm", href: "#services" },
+    { key: "footer.cybersecurity", href: "#services" },
+    { key: "footer.aiAutomation", href: "#services" },
+    { key: "footer.itConsulting", href: "#services" },
   ];
 
   const company = [
-    { label: "About Us", href: "#" },
-    { label: "Our Process", href: "#process" },
-    { label: "Case Studies", href: "#results" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#contact" },
+    { key: "footer.aboutUs", href: "#" },
+    { key: "footer.ourProcess", href: "#process" },
+    { key: "footer.caseStudies", href: "#results" },
+    { key: "footer.careers", href: "#" },
+    { key: "footer.contact", href: "#contact" },
   ];
 
   const legal = [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { key: "footer.privacy", href: "#" },
+    { key: "footer.terms", href: "#" },
+    { key: "footer.cookies", href: "#" },
   ];
 
   const socials = [
@@ -45,7 +47,7 @@ const Footer = () => {
             </div>
             <p className="font-heading text-lg font-bold mb-2">Syrian Smart Systems</p>
             <p className="text-primary-foreground/70 text-sm mb-6">
-              Smart IT solutions that help your business scale with efficiency, security, and innovation.
+              {t("footer.tagline")}
             </p>
             <div className="flex gap-3">
               {socials.map((social, index) => (
@@ -63,12 +65,12 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Services</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a href="#services" className="text-primary-foreground/70 hover:text-accent transition-colors text-sm">
-                    {service}
+                  <a href={service.href} className="text-primary-foreground/70 hover:text-accent transition-colors text-sm">
+                    {t(service.key)}
                   </a>
                 </li>
               ))}
@@ -77,12 +79,12 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Company</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t("footer.company")}</h4>
             <ul className="space-y-3">
               {company.map((item, index) => (
                 <li key={index}>
                   <a href={item.href} className="text-primary-foreground/70 hover:text-accent transition-colors text-sm">
-                    {item.label}
+                    {t(item.key)}
                   </a>
                 </li>
               ))}
@@ -91,12 +93,12 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Legal</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t("footer.legal")}</h4>
             <ul className="space-y-3">
               {legal.map((item, index) => (
                 <li key={index}>
                   <a href={item.href} className="text-primary-foreground/70 hover:text-accent transition-colors text-sm">
-                    {item.label}
+                    {t(item.key)}
                   </a>
                 </li>
               ))}
@@ -108,10 +110,10 @@ const Footer = () => {
         <div className="pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-primary-foreground/60 text-sm">
-              © {currentYear} Syrian Smart Systems. All rights reserved.
+              © {currentYear} Syrian Smart Systems. {t("footer.copyright")}
             </p>
             <p className="text-primary-foreground/60 text-sm">
-              السورية للأنظمة الذكية
+              {t("footer.arabicName")}
             </p>
           </div>
         </div>

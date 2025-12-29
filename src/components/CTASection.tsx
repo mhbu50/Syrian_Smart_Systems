@@ -1,7 +1,10 @@
 import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CTASection = () => {
+  const { t, isRTL } = useLanguage();
+
   return (
     <section className="section-padding bg-background">
       <div className="container-main">
@@ -19,11 +22,10 @@ const CTASection = () => {
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-              Ready to Upgrade Your IT?
+              {t("cta.title")}
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 mb-10">
-              Let's discuss how we can support your growth with smart, reliable IT solutions 
-              tailored to your business needs.
+              {t("cta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -31,16 +33,16 @@ const CTASection = () => {
                 size="xl" 
                 className="group"
               >
-                <Calendar className="mr-2" size={20} />
-                Schedule a Call
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                <Calendar className={isRTL ? "ml-2" : "mr-2"} size={20} />
+                {t("cta.scheduleCall")}
+                <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} group-hover:${isRTL ? '-translate-x-1' : 'translate-x-1'} transition-transform`} size={20} />
               </Button>
               <Button
                 variant="outline"
                 size="xl"
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
               >
-                Learn More
+                {t("cta.learnMore")}
               </Button>
             </div>
           </div>

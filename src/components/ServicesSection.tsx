@@ -1,60 +1,62 @@
 import { Code2, Cloud, Database, Shield, Bot, Users } from "lucide-react";
-
-const services = [
-  {
-    icon: Code2,
-    title: "Custom Software Development",
-    description: "Tailored applications built for your unique business needs with modern technologies and best practices.",
-    color: "primary",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & Infrastructure",
-    description: "Secure, scalable cloud solutions that power modern businesses with reliable uptime and performance.",
-    color: "accent",
-  },
-  {
-    icon: Database,
-    title: "ERP & CRM Solutions",
-    description: "Streamline operations, improve visibility, and drive growth with integrated business systems.",
-    color: "primary",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity",
-    description: "Comprehensive protection for your systems, data, and users against evolving digital threats.",
-    color: "accent",
-  },
-  {
-    icon: Bot,
-    title: "AI & Automation",
-    description: "Reduce manual work and improve efficiency with intelligent automation and AI-powered solutions.",
-    color: "primary",
-  },
-  {
-    icon: Users,
-    title: "IT Consulting",
-    description: "Strategic guidance from experienced engineers to align technology with your business goals.",
-    color: "accent",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Code2,
+      titleKey: "services.software.title",
+      descKey: "services.software.desc",
+      color: "primary",
+    },
+    {
+      icon: Cloud,
+      titleKey: "services.cloud.title",
+      descKey: "services.cloud.desc",
+      color: "accent",
+    },
+    {
+      icon: Database,
+      titleKey: "services.erp.title",
+      descKey: "services.erp.desc",
+      color: "primary",
+    },
+    {
+      icon: Shield,
+      titleKey: "services.security.title",
+      descKey: "services.security.desc",
+      color: "accent",
+    },
+    {
+      icon: Bot,
+      titleKey: "services.ai.title",
+      descKey: "services.ai.desc",
+      color: "primary",
+    },
+    {
+      icon: Users,
+      titleKey: "services.consulting.title",
+      descKey: "services.consulting.desc",
+      color: "accent",
+    },
+  ];
+
   return (
     <section id="services" className="section-padding bg-background">
       <div className="container-main">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-            Our Services
+            {t("services.badge")}
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Comprehensive IT Solutions for{" "}
-            <span className="text-gradient">Your Success</span>
+            {t("services.title")}{" "}
+            <span className="text-gradient">{t("services.titleHighlight")}</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            From custom development to enterprise security, we provide end-to-end IT services 
-            that help businesses thrive in the digital age.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -73,10 +75,10 @@ const ServicesSection = () => {
                 <service.icon className="w-7 h-7 text-primary-foreground" />
               </div>
               <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {service.description}
+                {t(service.descKey)}
               </p>
             </div>
           ))}
