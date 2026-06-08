@@ -63,7 +63,7 @@ const ContactSection = () => {
                 <div>
                   <div className="text-sm text-muted-foreground">{t("contact.call")}</div>
                   <a href="tel:+963123456789" className="font-medium text-foreground hover:text-primary transition-colors">
-                    +963 123 456 789
+                    +963991318831
                   </a>
                 </div>
               </div>
@@ -75,7 +75,8 @@ const ContactSection = () => {
                 <div>
                   <div className="text-sm text-muted-foreground">{t("contact.visit")}</div>
                   <span className="font-medium text-foreground">
-                    Damascus, Syria
+                    Damascus, Syria - 
+                    {t("contact.address")}
                   </span>
                 </div>
               </div>
