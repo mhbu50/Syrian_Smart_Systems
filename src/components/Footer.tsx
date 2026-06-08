@@ -7,12 +7,12 @@ const Footer = () => {
   const { t } = useLanguage();
 
   const services = [
-    { key: "footer.customSoftware", href: "#services" },
-    { key: "footer.cloudInfra", href: "#services" },
-    { key: "footer.erpCrm", href: "#services" },
-    { key: "footer.cybersecurity", href: "#services" },
-    { key: "footer.aiAutomation", href: "#services" },
-    { key: "footer.itConsulting", href: "#services" },
+    { key: "footer.manufacturing", href: "#services" },
+    { key: "footer.distribution", href: "#services" },
+    { key: "footer.healthcare", href: "#services" },
+    { key: "footer.retail", href: "#services" },
+    { key: "footer.education", href: "#services" },
+    { key: "footer.realestate", href: "#services" },
   ];
 
   const company = [

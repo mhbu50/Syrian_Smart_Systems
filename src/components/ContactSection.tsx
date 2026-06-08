@@ -50,8 +50,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">{t("contact.email")}</div>
-                  <a href="mailto:info@syriansmarts.com" className="font-medium text-foreground hover:text-primary transition-colors">
-                    info@syriansmarts.com
+                  <a href="mailto:info@syrsystems.io" className="font-medium text-foreground hover:text-primary transition-colors">
+                    info@syrsystems.io
                   </a>
                 </div>
               </div>
@@ -62,8 +62,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">{t("contact.call")}</div>
-                  <a href="tel:+963123456789" className="font-medium text-foreground hover:text-primary transition-colors">
-                    +963991318831
+                  <a href="tel:+963991318831" className="font-medium text-foreground hover:text-primary transition-colors" dir="ltr">
+                    +963 991 318 831
                   </a>
                 </div>
               </div>
@@ -75,7 +75,6 @@ const ContactSection = () => {
                 <div>
                   <div className="text-sm text-muted-foreground">{t("contact.visit")}</div>
                   <span className="font-medium text-foreground">
-                    Damascus, Syria - 
                     {t("contact.address")}
                   </span>
                 </div>
